@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0f0f14" />
+<title>Interval Ear Trainer</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/icon.svg" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <h1>Interval Ear Trainer</h1>
+  <p class="subtitle">Sing the interval. We'll tell you how close you got.</p>
+
+  <div class="notice" id="micNotice"></div>
+
+  <details class="settings" id="settingsPanel">
+    <summary>Settings</summary>
+    <div class="settings-body">
+      <div>
+        <p class="field-label">Voice ranges</p>
+        <div class="chip-row" id="rangeChips"></div>
+        <p class="pool-display" id="poolDisplay"></p>
+      </div>
+
+      <div>
+        <p class="field-label">Intervals</p>
+        <div class="chip-row" id="intervalChips"></div>
+      </div>
+
+      <div>
+        <p class="field-label">Direction</p>
+        <div class="segmented" id="directionSegmented">
+          <button data-value="up">Up</button>
+          <button data-value="down">Down</button>
+          <button data-value="random">Random</button>
+        </div>
+      </div>
+
+      <div>
+        <p class="field-label">Tolerance</p>
+        <div class="slider-row">
+          <input type="range" id="toleranceSlider" min="10" max="100" step="5" />
+          <span class="slider-value" id="toleranceValue">50¢</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="field-label">Listen duration</p>
+        <div class="slider-row">
+          <input type="range" id="listenSlider" min="3" max="10" step="1" />
+          <span class="slider-value" id="listenValue">6s</span>
+        </div>
+      </div>
+
+      <div class="toggle-row">
+        <div>
+          <p class="field-label" style="margin-bottom: 2px">Octave-agnostic</p>
+          <p class="pool-display" style="margin-top: 0">Any octave of the target counts as correct</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="octaveAgnosticToggle" />
+          <span class="track"></span>
+          <span class="thumb"></span>
+        </label>
+      </div>
+    </div>
+  </details>
+
+  <div class="exercise">
+    <div class="prompt">
+      <div class="ref-note" id="refNoteLabel">Tap Start to begin</div>
+      <div class="instruction" id="instructionLabel"></div>
+    </div>
+
+    <div class="state-label" id="stateLabel"></div>
+
+    <div class="meter-area">
+      <div class="detected-note idle" id="detectedNote">—</div>
+      <div class="cents-meter" id="centsMeter">
+        <div class="tolerance-zone" id="toleranceZone"></div>
+        <div class="center-line"></div>
+        <div class="needle hidden" id="needle"></div>
+      </div>
+      <div class="cents-labels"><span>flat</span><span>in tune</span><span>sharp</span></div>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <div class="button-row" id="buttonRow">
+      <button class="action primary" id="startBtn">Start</button>
+    </div>
+  </div>
+
+  <div class="score-row">
+    <div class="score-item score">
+      <div class="num" id="scoreNum">0</div>
+      <div class="label">Score</div>
+    </div>
+    <div class="score-item streak">
+      <div class="num" id="streakNum">0</div>
+      <div class="label">Streak</div>
+    </div>
+  </div>
+
+  <footer>
+    If nothing plays on iPhone, check the ringer switch is on.
+    &middot; <a href="tests/test.html">Unit tests</a>
+  </footer>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
