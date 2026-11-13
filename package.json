@@ -1,0 +1,10 @@
+{
+  "name": "interval-singing-trainer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static web app that drills singing intervals by ear. No backend, no build step - this package.json exists only so `node tests/run-tests.mjs` can import the app's ES modules directly.",
+  "scripts": {
+    "test": "node tests/run-tests.mjs"
+  }
+}
